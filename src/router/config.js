@@ -95,5 +95,6 @@ export const publicRoute = [
     // { path: '/loading', name: 'loading', component: Loading },
     { path: '/404', name: 'notFound', component: notFound },
     { path: '/error', name: 'error', component: error },
-    { path: '/*', component: notFound },
+    // 설정 이외의 경로가 올경우 not found로 대체
+    { path: '/:catchAll(.*)', component: notFound },
 ]
