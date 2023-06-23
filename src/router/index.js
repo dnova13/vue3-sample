@@ -4,9 +4,9 @@ import {
     // protectedRoute
 } from './config'
 
-const BASE_URL = '/dining'
+const baseUrl = process.env.VUE_APP_BASE_URL
 const router = createRouter({
-    history: createWebHistory(BASE_URL),
+    history: createWebHistory(baseUrl),
     routes: publicRoute,
 })
 

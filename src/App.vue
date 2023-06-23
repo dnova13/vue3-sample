@@ -1,18 +1,18 @@
 <template>
     <div id="wrapper" @click="onClickOutside">
         <div class="wrapper_inner">
-            <!-- <home-splash
+            <home-splash
                 v-if="onIntro"
                 :on-splash="onSplash"
                 :on-guide="onGuide"
                 :shop-info="shopInfo"
-            ></home-splash> -->
+            ></home-splash>
             <!-- <tap-top
                 :menu-list="menuList"
                 :shop-info="shopInfo"
                 @setTrigger="setTrigger"
             ></tap-top> -->
-            <!-- 
+
             <transition name="fade">
                 <router-view
                     v-if="onScreen"
@@ -30,7 +30,7 @@
                 :hide-category="hideCategory"
                 @setTrigger="setTrigger"
                 @hide-category="hideCategory = $event"
-            /> -->
+            />
             <router-view> </router-view>
         </div>
     </div>

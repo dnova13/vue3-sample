@@ -1,12 +1,14 @@
 const { defineConfig } = require('@vue/cli-service')
 const path = require('path')
+const baseUrl = process.env.VUE_APP_BASE_URL
+
 function resolve(dir) {
     return path.join(__dirname, dir)
 }
 
 module.exports = defineConfig({
     transpileDependencies: true,
-    publicPath: '/dining/',
+    publicPath: baseUrl,
     chainWebpack: (config) => {
         config.resolve.alias.set('~$', resolve('./')).set('@$', resolve('src'))
 
