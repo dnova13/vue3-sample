@@ -1,0 +1,219 @@
+/*셰프소개*/
+.sub_content.chef {
+    padding-top: 35px;
+}
+
+.chef_img_wrap {
+    height: 437px;
+    /* 230418 mainNav 밀림 현상으로 주석처리_yjSeol */
+    /* 현재 다시 수정 jhJun */
+    width: 300px;
+    border-radius: 60% / 42%;
+    margin: 0 auto 25px auto;
+    /* margin-bottom: 25px; */
+}
+
+.chef_img_wrap img {
+    margin: 0 auto;
+}
+
+.chef_about {
+    text-align: right;
+}
+
+.chef_about .restaurant_name {
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+
+.chef_about .chef_name {
+    font-size: 40px;
+    padding-bottom: 12px;
+}
+
+.chef_about .desc {
+    font-size: 15px;
+    /* font-weight: 700; */
+    font-weight: 400;
+    line-height: 20px;
+    padding-bottom: 8.2vw;
+    word-break: keep-all;
+}
+
+/*음식점 소개*/
+.restaurant .restaurant_slide {
+    max-height: 298px;
+    height: 37vh;
+    overflow: hidden;
+    display: flex;
+}
+
+.restaurant .restaurant_slide_inner {
+    font-size: 0px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+    height: auto;
+    z-index: 1;
+}
+
+.restaurant .restaurant_slide_inner.dragging {
+    cursor: grab;
+    scroll-behavior: auto;
+}
+
+.restaurant .restaurant_slide_inner.dragging img {
+    pointer-events: none;
+}
+
+.sub_content.restaurant .restaurant_slide_inner .restaurant_slide_img {
+    display: inline-block;
+    width: 100vw;
+    object-fit: cover;
+}
+
+.restaurant_slide_controls {
+    position: absolute;
+    top: 44%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+
+.restaurant .restaurant_slide_controls span {
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+}
+
+.restaurant_slide_pager .prev {
+    transform: rotate(-180deg);
+    left: 18px;
+}
+
+.restaurant_slide_pager .next {
+    right: 18px;
+}
+
+.restaurant_slide_dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.restaurant_slide_dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 100px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.restaurant_slide_dot.active {
+    background-color: #fff;
+}
+
+.restaurant_about {
+    padding-top: 55px;
+    padding-bottom: 25px;
+}
+
+.restaurant_about_title {
+    font-size: 38px;
+    font-family: 'Pretendard';
+    font-weight: 700;
+    padding-bottom: 25px;
+}
+
+.restaurant_about_title .text_sm {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.restaurant_about_desc {
+    font-size: 15px;
+    /* font-family: 'Pretendard'; */
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+@media screen and (min-width: 414px) {
+    .sub_content.restaurant .restaurant_slide_inner .restaurant_slide_img {
+        /* width: 414px; */
+        width: 450px;
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .restaurant .restaurant_slide_inner {
+        height: 37vh;
+        max-height: 298px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    /*셰프소개*/
+    .sub_content.chef {
+        padding-top: 15px;
+    }
+
+    .chef_img_wrap {
+        /* height: auto;
+        width: 88%;
+        margin: 0 auto 25px; */
+    }
+
+    .chef_img_wrap img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    /*음식점 소개*/
+    .restaurant_slide_pager {
+        margin-top: 25px;
+    }
+
+    .restaurant_slide_controls img {
+        width: 85%;
+    }
+
+    .restaurant_about {
+        padding-top: 30px;
+    }
+
+    .restaurant_about_title {
+        font-size: 8.95vw;
+        padding-bottom: 20px;
+    }
+
+    .restaurant_about_title .text_sm {
+        font-size: 4.5vw;
+    }
+
+    .restaurant_about_desc {
+        font-size: 4.15vw;
+    }
+
+    /*셰프 소개*/
+    .chef_about .restaurant_name {
+        font-size: 5.2vw;
+        padding-bottom: 1px;
+    }
+    .chef_about .chef_name {
+        font-size: 8.9vw;
+    }
+
+    .chef_about .desc {
+        font-size: 3.65vw;
+    }
+}

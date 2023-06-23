@@ -1,0 +1,164 @@
+.join-page {
+    display: flex;
+    justify-content: center;
+    z-index: 99;
+    margin: 0 auto;
+}
+
+.join-wrap {
+    margin: 15px 20px 20px 20px;
+    min-width: 240px;
+    max-width: 300px;
+    height: fit-content;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.join-title {
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 45px;
+}
+
+.join-title .title {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 25px;
+}
+
+.join-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.form-group input {
+    width: 100%;
+}
+
+.form-group input {
+    margin-bottom: 15px;
+    border-radius: 3px;
+    padding: 0 15px;
+    height: 45px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.form-group-check {
+    margin-bottom: 10px;
+}
+
+.join-content input:focus,
+input:active {
+    /* border: 1px solid #466d44; */
+}
+
+input::placeholder {
+    font-size: 12px;
+}
+
+.content-check {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 12px;
+    margin-bottom: 20px;
+}
+
+.content-check span {
+    font-size: 12px;
+    /* margin-left: -20px; */
+    font-weight: bold;
+}
+
+.check-box {
+    align-items: center;
+    vertical-align: middle;
+    display: flex;
+}
+
+.check-box span {
+    font-size: 12px;
+}
+
+.form-group-check input[type='checkbox'] {
+    position: relative;
+    padding: 5px;
+    margin: 0 5px 0 0;
+}
+
+.find {
+    margin-left: auto; /* 오른쪽 정렬을 위해 왼쪽 마진을 auto로 설정 */
+}
+
+.join-btn {
+    display: flex;
+    font-size: 15px;
+    width: 100%;
+    height: 45px;
+    margin-top: 30px;
+    /* margin: 0 auto; */
+    padding: 2px 0;
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    background-color: #083d07;
+    color: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-clip: content-box;
+}
+
+/* 갤럭시폴드.ver */
+@media all and (min-width: 0px) and (max-width: 280px) {
+    .loginBtn {
+        margin-bottom: 0;
+    }
+}
+
+.join {
+    float: right;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.join a {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* 추가정보 입력 */
+.gender-wrap {
+    margin-bottom: 5px;
+}
+
+.gender-wrap.error {
+    color: red;
+}
+
+.gender-radio {
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 40px; */
+}
+
+.gender-radio label {
+    margin-right: 10px;
+}
+
+.v-input.join-form {
+    margin-bottom: 4px;
+}
+
+/* v-text-field 에러 메세지 컬러 */
+.v-input__slot::after {
+    border-color: rgba(255, 0, 0, 0.7) !important;
+}
+
+.v-input__slot::before {
+    border-color: rgba(255, 0, 0, 0.7) !important;
+}
+.error--text {
+    color: rgba(255, 0, 0, 0.7) !important;
+}

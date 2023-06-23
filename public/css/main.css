@@ -1,0 +1,1316 @@
+main {
+    position: relative;
+    overflow: hidden;
+    /* margin-bottom: 20px; */
+    /* overflow-y: auto; */
+}
+
+main .main_img_bg {
+    background: url('../img/cover_img1.jpg') no-repeat 50% 0 / contain;
+    width: 100%;
+    height: 600px;
+    z-index: -2;
+    position: absolute;
+    top: 0;
+}
+
+main .main_slide_bg {
+    background-color: #fff;
+    position: relative;
+    width: 100vw;
+}
+
+main .main_round_bg {
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    overflow: hidden;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+}
+
+main .main_round_bg img {
+    width: 100%;
+}
+
+main .main_slide_bg::after {
+    content: none;
+    display: block;
+    width: 230vw;
+    height: 230vw;
+    border-radius: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: -35.5vw;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.slide_wrapper.main {
+    height: 100%;
+    transform: translateY(-28vw);
+    overflow: hidden;
+    width: 100vw;
+}
+
+#main_slide {
+    display: flex;
+    position: relative;
+    top: 0;
+    width: 10000px;
+}
+
+main .main_slide_cont {
+    width: 100vw;
+    height: 100%;
+    transition: all 0.35s;
+    position: relative;
+    cursor: grab;
+}
+
+/*main .main_slide_cont.hide {
+    display: none;
+}
+
+main .ingredient_brief {
+    transform: translateY(-28px);
+}*/
+
+main .title_wrap {
+    text-align: center;
+}
+
+main .primary_title {
+    font-size: 31.19px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+main .ingredient_name {
+    font-size: 20.79px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+main .related_btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 84px;
+    margin-left: auto;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px 12px 7px;
+    box-shadow: 0 0 8px rgb(0 0 0 / 17%);
+    border-radius: 100px;
+}
+
+main .ingredient_img {
+    position: relative;
+    margin-bottom: 55px;
+}
+
+main .ingredient_img_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 100%;
+}
+
+main .control {
+    position: absolute;
+    top: 195px;
+    /*transform: translateY(-100%);*/
+    line-height: 1;
+    z-index: 5;
+    padding: 1% 3% 1% 2%;
+}
+
+main .control.prev {
+    left: 5%;
+}
+
+main .control.next {
+    right: 5%;
+    transform: rotate(180deg);
+}
+
+main .ingredient_info_list {
+    width: 52%;
+    margin: 0 auto;
+}
+
+main .ingredient_info_list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+main .ingredient_info_list li:last-child {
+    margin-bottom: 0;
+}
+
+main .ingredient_info_list .ingredient_info_title {
+    font-size: 20px;
+    font-weight: 700;
+    width: 105px;
+    margin-right: 35px;
+}
+
+main .ingredient_info_list .ingredient_info_cont {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+main .ingredient_info_list .ingredient_info_cont .ingredient_row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+main .ingredient_info_list .ingredient_info_cont .icon.guide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    background-color: #000;
+    border-radius: 100px;
+    font-size: 11.54px;
+    color: #fff;
+    /* font-size: 11.54px; */
+}
+
+main .ingredient_info_list .ingredient_info_cont em {
+    display: block;
+    font-size: 11px;
+}
+
+main .process {
+    margin-bottom: 25px;
+}
+
+main .process .process_title {
+    margin-bottom: 15px;
+}
+
+main .process .img_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-radius: 12px; */
+    /* 2305230 YJ-SEOL 주석 */
+    overflow: hidden;
+    cursor: pointer;
+}
+/* 230612 YJ-SEOL */
+main .process .img_wrap.document {
+    overflow: visible;
+}
+
+main .process .process_img_wrap img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+/* main .process .img_wrap img {
+    width: 100%;
+} */
+
+main .document_btn {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    font-weight: 300;
+    padding-top: 10px;
+    color: #000;
+    line-height: 1;
+    font-size: 14px;
+    font-family: 'Pretendard';
+    cursor: pointer;
+}
+
+main .document_btn .switch {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    border: max(1px, 0.1em) solid #c5c5c5;
+    background-color: #c5c5c5;
+    border-radius: 1.25em;
+    width: 33px;
+    height: 18px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+main .document_btn .switch::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: left 250ms linear;
+}
+
+main .document_btn img {
+    margin-left: 5px;
+    transform: translateY(2px);
+}
+
+/* 증빙서류 슬라이드 동작 */
+main .document_list {
+    padding-top: 0;
+    width: 100%;
+    height: 0px;
+    overflow: hidden;
+    /* transition: 0.4s; */
+    transition: 0.4s;
+    position: relative;
+    cursor: grab;
+}
+
+main .process_wrap.disable_click {
+    pointer-events: none;
+}
+
+.slider_container {
+    width: 80%;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    z-index: 50;
+}
+
+.slider_container.dragging .inner_slide {
+    cursor: grab;
+    scroll-behavior: auto;
+}
+
+.slider_container.dragging .document_item {
+    pointer-events: none;
+}
+
+.inner_slider {
+    width: 150%;
+    display: flex;
+    gap: 10px;
+    pointer-events: none;
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+
+main .document_list .box {
+    width: 138px;
+    height: 190px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+}
+
+main .document_btn.active img {
+    transform: rotate(180deg) translateY(-1px);
+}
+
+main .document_btn.active .switch {
+    background-color: var(--key-color);
+    border-color: var(--key-color);
+}
+
+main .document_btn.active .switch::before {
+    background: url('../img/toggle_check_icon.png') no-repeat center #fff;
+    left: auto;
+    right: 0;
+}
+
+main .document_list.active {
+    height: 300px;
+    padding-top: 25px;
+}
+/* 갤럭시폴드.ver */
+@media all and (min-width: 0px) and (max-width: 280px) {
+    .main .document_list.active {
+        height: 250px;
+        padding-top: 25px;
+    }
+}
+main .document_list .swiper-button-prev:after,
+main .document_list .swiper-rtl .swiper-button-next:after,
+main .document_list .swiper-button-next:after,
+main .document_list .swiper-rtl .swiper-button-prev:after {
+    content: '';
+    background: url('../img/document_slide_arrow.png') no-repeat 50% 50% / contain;
+    width: 17px;
+    height: 28px;
+}
+
+main .document_list .swiper-button-next,
+main .document_list .swiper-rtl .swiper-button-prev {
+    transform: rotate(180deg);
+}
+
+main .document_list .swiper-pagination {
+    bottom: 0;
+}
+
+main .document_list .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 100px;
+    background: #fff;
+    border: 1px solid #000;
+    opacity: 1;
+}
+
+main .document_list .swiper-pagination-bullet-active {
+    background: #000;
+}
+
+/*메인 슬라이드 페이저*/
+main .main_dots {
+    position: absolute;
+    /* top: 482px; */
+    top: 308px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media screen and (min-width: 415px) {
+    main .main_dots {
+        /*top: 39%;*/
+        /* top: 530px; */
+        top: 380px;
+    }
+}
+
+@media screen and (max-width: 395px) {
+    main .main_dots {
+        /* top: 462px; */
+        top: 302px;
+    }
+}
+
+@media screen and (max-width: 366px) {
+    main .main_dots {
+        /* top: 462px; */
+        top: 295px;
+    }
+}
+
+@media screen and (max-width: 345px) {
+    main .main_dots {
+        /* top: 462px; */
+        top: 285px;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    main .main_dots {
+        /* top: 408px; */
+        top: 272px;
+    }
+}
+
+@media screen and (max-width: 305px) {
+    main .main_dots {
+        /* top: 380px; */
+        top: 258px;
+    }
+}
+
+main .main_dots.open_01 {
+    top: 31.8%;
+}
+
+main .main_dots.open_02 {
+    top: 26.3%;
+}
+
+main .main_dots.open_03 {
+    top: 22.8%;
+}
+
+main .main_dots li button {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 50%;
+    display: inline-block;
+    /* transition: background-color 0.6s ease; */
+    transition: background-color 0.1s ease-out;
+    text-indent: -999999px;
+}
+
+main .main_dots li button:before {
+    content: none;
+}
+
+main .main_dots li.active button {
+    background-color: #000;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#modal.modal_overlay,
+#img-modal.modal_overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    /* z-index: 10; */
+    z-index: 99999;
+}
+
+#modal .modal_window,
+#img-modal .modal_window {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    max-width: 600px;
+    width: 85vw;
+    height: 70vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* padding: 12px 5px; */
+    padding: 30px 5px;
+    text-align: center;
+}
+
+/* YJ SEOL 230508 원산지 모달창 */
+.modal_window .img-modal_title {
+    /* text-align: left; */
+    color: var(--key-color);
+    /* margin-left: 10%; */
+    margin-bottom: 10px;
+}
+#img-modal .modal_window {
+    padding: 30px 10px;
+}
+
+#modal .modal_window_inner {
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 10px;
+}
+
+#img-modal .modal_window_inner {
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 10px;
+}
+
+#modal .title {
+    padding-top: 15px;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+#modal .title .modal_title {
+    font-size: 25px;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+
+#modal .title .desc {
+    font-weight: 300;
+}
+
+#modal .close_area,
+#img-modal .close_area {
+    display: block;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px gray;
+    color: white;
+    position: absolute;
+    /* top: 8px;
+    right: 10px; */
+    top: 12px;
+    right: 17px;
+}
+
+#modal .content {
+    padding-bottom: 20px;
+}
+
+#img-modal .content img {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#img-modal .content .modal_title {
+    font-size: 25px;
+    padding: 10px;
+    font-weight: 500;
+    color: var(--key-color);
+}
+
+#img-modal .content .modal_content {
+    font-size: 18px;
+    padding: 10px;
+}
+#modal .content .bg_text {
+    display: inline-block;
+    padding: 4px 25px;
+    background: var(--key-color);
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+#modal .content .safety_value {
+    font-size: 27px;
+    font-weight: 800;
+    color: var(--key-color);
+    padding-bottom: 3px;
+}
+
+#modal .content .safety_value_cal {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+#modal .modal_img_wrap {
+    margin-bottom: 7px;
+}
+
+#modal .modal_img_wrap img {
+    margin: 0 auto;
+}
+
+#modal .modal_img_wrap img:nth-child(1) {
+    /* height: 150px; */
+}
+
+#modal .modal_img_wrap.certification {
+    text-align: left;
+}
+
+#modal .modal_img_wrap.certification .certification_name {
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 5px;
+    border: 1px solid #777;
+    border-radius: 100px;
+    padding: 2px 5px;
+}
+
+#modal .modal_img_wrap.certification img {
+    width: 100%;
+}
+
+#modal .modal_text_wrap {
+    margin-bottom: 6vw;
+}
+
+#modal .modal_chkpoint {
+    margin-bottom: 15px;
+}
+
+#modal .modal_chkpoint p {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--key-color);
+}
+
+.scroll_down {
+    width: 100%;
+    position: fixed;
+    bottom: 56px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    transition: all 0.3s ease-out;
+    z-index: 14;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    opacity: 0.8; */
+}
+
+.scroll_down span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    margin-left: -4px;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    -webkit-transform: rotate(-38deg) skew(15deg);
+    transform: rotate(-38deg) skew(15deg);
+    -webkit-animation: sdb07 2s infinite;
+    animation: sdb07 2s infinite;
+    opacity: 0.3;
+    box-sizing: border-box;
+}
+
+.scroll_down span:nth-of-type(1) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.scroll_down span:nth-of-type(2) {
+    top: 8px;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+.scroll_down .scroll_down_text {
+    display: block;
+    font-size: 10px;
+    color: #000;
+    opacity: 0.5;
+}
+
+@-webkit-keyframes sdb07 {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes sdb07 {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
+/*관련메뉴*/
+.slide_wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 60px);
+    /* height: 100%; */
+    z-index: 1;
+}
+
+.slides {
+    display: flex;
+    position: relative;
+    top: 0;
+    left: -100%;
+    width: 10000px;
+    cursor: grab;
+    /* height: 100%; */
+}
+
+.slides.shifting {
+    transition: left 0.35s ease-out;
+}
+
+.related_menu {
+    position: relative;
+    overflow: hidden;
+}
+
+.related_menu_item {
+    width: 100vw;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.35s;
+    position: relative;
+    cursor: grab;
+}
+
+.related_menu_item .img_wrap {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.related_menu_item .img_wrap::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.related_menu_item .img_wrap img {
+    height: 100%;
+}
+
+.related_menu_item .text_wrap {
+    position: absolute;
+    top: 26vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    z-index: 15;
+}
+
+.related_menu_item .related_heading_wrap {
+    position: relative;
+}
+
+.related_menu_item .text_wrap .related_menu_title {
+    font-size: 45px;
+    font-weight: 700;
+    padding-bottom: 15px;
+    font-family: 'Pretendard';
+    padding-left: 15px;
+    padding-right: 15px;
+    word-break: keep-all;
+}
+
+.related_menu_item .text_wrap .related_menu_desc {
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Pretendard';
+    width: 65%;
+    word-break: keep-all;
+    margin: 0 auto 105px;
+}
+
+.related_menu_item .text_wrap .goto_ingredient {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 50px;
+    border: 1px solid #fff;
+    text-align: center;
+    padding: 6px 8px 4px;
+    width: 105px;
+    margin-left: auto;
+    font-family: 's-core_dream4_regular';
+}
+
+.related_menu .slide_pagination {
+    position: absolute;
+    left: 50%;
+    bottom: 18vh;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.related_menu .slide_pagination .related_menu_dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 100px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.related_menu .slide_pagination .related_menu_dot.active {
+    background-color: #fff;
+}
+
+.related_menu .related_menu_control {
+    position: absolute;
+    top: 32vh;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.related_menu .related_menu_control.prev {
+    left: 15px;
+}
+
+.related_menu .related_menu_control.next {
+    transform: rotate(180deg) translateY(50%);
+    right: 15px;
+}
+
+/******************Media Query************************/
+
+@media screen and (min-width: 250px) {
+    main .main_slide {
+        padding-top: 38vw;
+        margin-bottom: -30vw;
+    }
+
+    main .ingredient_brief {
+        margin-bottom: 45px;
+    }
+
+    .slide_wrapper.main {
+        transform: translateY(-30vw);
+    }
+
+    main .primary_title {
+        font-size: 28px;
+    }
+
+    main .ingredient_name {
+        font-size: 17.5px;
+    }
+
+    main .related_btn {
+        font-size: 14px;
+        width: 72px;
+        padding: 4px 10px 5px;
+    }
+
+    main .ingredient_img_wrap {
+        width: 58vw;
+        height: 58vw;
+    }
+
+    main .ingredient_img_wrap img {
+        height: 100%;
+    }
+
+    main .control img {
+        width: 12px;
+    }
+
+    main .ingredient_info_list {
+        width: 54%;
+    }
+
+    main .ingredient_info_list li {
+        margin-bottom: 10px;
+    }
+
+    main .ingredient_info_list .ingredient_info_title {
+        font-size: 4.3vw;
+        width: 24vw;
+        margin-right: 4vw;
+    }
+
+    main .ingredient_info_list .ingredient_info_cont {
+        font-size: 4.3vw;
+    }
+
+    main .ingredient_info_list .ingredient_info_cont .icon.guide {
+        width: 13px;
+        height: 13px;
+        font-size: 11px;
+        margin-left: 1.3vw;
+    }
+
+    main .process .process_title {
+        font-size: 22px;
+    }
+
+    main .document_btn {
+        font-size: 13px;
+    }
+
+    main .document_accordion.active .document_list {
+        height: 64vw;
+    }
+
+    .swiper-wrapper {
+        height: calc(62vw + 25px);
+    }
+
+    main .document_list.active {
+        /* YJ SEOL 230508 주석처리 */
+        /* height: 75vw; */
+    }
+
+    main .document_list .box {
+        width: 46vw;
+        /* height: 60vw; */
+        /* 230528 yj-seol */
+        height: 62vw;
+    }
+
+    main .document_list .swiper-button-prev:after,
+    main .document_list .swiper-rtl .swiper-button-next:after,
+    main .document_list .swiper-button-next:after,
+    main .document_list .swiper-rtl .swiper-button-prev:after {
+        width: 13px;
+    }
+
+    /*방사능 modal*/
+    #modal .title .desc {
+        font-size: 3.8vw;
+    }
+
+    #modal .modal_img_wrap .certification_name {
+        font-size: 3.8vw;
+    }
+}
+.swiper-slide .img_wrap {
+    /* 230526 yj-seol */
+    /* margin-top: 30px; */
+}
+@media screen and (min-width: 350px) {
+    main .main_slide {
+        padding-top: 34vw;
+        margin-bottom: -28vw;
+    }
+
+    /*main .ingredient_brief {transform: translateY(-28vw);}*/
+    .slide_wrapper.main {
+        transform: translateY(-28vw);
+    }
+
+    main .primary_title {
+        font-size: 31.19px;
+    }
+    /* 230528 yj-seol */
+    main .document_list .box {
+        width: 46vw;
+        height: 62vw;
+    }
+
+    main .ingredient_name {
+        font-size: 20.79px;
+    }
+
+    main .related_btn {
+        width: 84px;
+        font-size: 16px;
+        padding: 6px 12px 7px;
+    }
+
+    main .ingredient_img_wrap {
+        width: 53vw;
+        height: 53vw;
+    }
+
+    main .ingredient_info_list {
+        width: 59%;
+    }
+
+    main .ingredient_info_list .ingredient_info_title {
+        font-size: 20px;
+        width: 105px;
+        margin-right: 35px;
+    }
+
+    main .ingredient_info_list .ingredient_info_cont {
+        font-size: 18px;
+    }
+
+    main .process .process_title {
+        font-size: 24px;
+    }
+
+    main .document_btn {
+        font-size: 14px;
+    }
+
+    /*방사능 modal*/
+    #modal .title .desc {
+        font-size: 13px;
+    }
+
+    #modal .modal_img_wrap .certification_name {
+        font-size: 13px;
+    }
+}
+
+@media screen and (min-width: 360px) and (max-width: 369px) {
+    /* 230528 yj-seol */
+    main .document_list .box {
+        width: 46vw;
+        height: 60vw;
+    }
+}
+
+@media screen and (min-width: 415px) {
+    .related_menu_item {
+        max-width: 450px;
+        width: 100%;
+    }
+}
+@media screen and (min-width: 370px) {
+    main .document_list .box {
+        width: 52vw;
+        height: 68vw;
+    }
+    .slide_wrapper.main,
+    .main_slide_cont,
+    .slide_wrapper {
+        /* max-width: 414px; */
+        max-width: 450px;
+        width: 100%;
+    }
+
+    /* .related_menu_item {
+        max-width: 450px;
+        width: 100%;
+    } */
+
+    main .control {
+        top: 225px;
+    }
+
+    main .ingredient_img_wrap {
+        /* width: 280px;
+		height: 280px; */
+        /* 230612 YJ-SEOL */
+        width: 58vw;
+        height: 58vw;
+    }
+
+    main .document_list.active {
+        /* height: 300px; */
+        height: 340px;
+    }
+
+    .related_menu .related_menu_control {
+        top: 32vh;
+    }
+}
+/* 230601 media 추가 yj-seol */
+@media screen and (min-width: 380px) {
+    main .document_list .box {
+        width: 51vw;
+        height: 68vw;
+    }
+    /* 230612 YJ-SEOL */
+    main .ingredient_img_wrap {
+        width: 58vw;
+        height: 58vw;
+    }
+}
+@media screen and (min-width: 390px) {
+    main .document_list .box {
+        width: 49vw;
+        height: 66vw;
+    }
+}
+@media screen and (min-width: 400px) {
+    main .document_list .box {
+        width: 46vw;
+        height: 63vw;
+    }
+}
+@media screen and (min-width: 420px) {
+    main .document_list .box {
+        width: 43vw;
+        height: 60vw;
+    }
+}
+@media screen and (min-width: 440px) {
+    main .document_list .box {
+        width: 43vw;
+        height: 56vw;
+    }
+    /* 230612 YJ-SEOL */
+    main .ingredient_img_wrap {
+        width: 280px;
+        height: 280px;
+    }
+}
+@media screen and (min-width: 481px) {
+    main .main_slide_bg::after {
+        top: -4.5%;
+    }
+
+    main .main_slide {
+        padding-top: 140px;
+        margin-bottom: -28px;
+    }
+
+    .slide_wrapper.main {
+        transform: translateY(-120px);
+    }
+
+    main .ingredient_brief {
+        margin-bottom: 30px;
+    }
+
+    main .ingredient_info_list {
+        /* width: 52%; */
+        width: 60%;
+        padding-left: 6%;
+    }
+
+    .slider_container {
+        height: 325px;
+    }
+
+    main .document_accordion.active .document_list {
+        height: 325px;
+    }
+
+    main .document_list .box {
+        width: 180px;
+        height: 253px;
+    }
+
+    main .ingredient_info_list .ingredient_info_cont .icon.guide {
+        margin-left: 5px;
+    }
+
+    .related_menu .slide_pagination {
+        bottom: 10vh;
+    }
+}
+
+@media screen and (min-width: 721px) {
+    .splash .splash_btn_wrap {
+        /* margin-top: 60px; */
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .related_menu_item .text_wrap .related_menu_desc {
+        /* margin: 0 auto 10.2vw; */
+        margin: 0 auto 10.2vw;
+    }
+
+    .related_menu .related_menu_control {
+        top: 35vh;
+    }
+}
+
+@media screen and (max-width: 395px) {
+    main .control {
+        top: 188px;
+    }
+
+    .related_menu .related_menu_control {
+        top: 35vh;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .related_menu .related_menu_control {
+        top: 36vh;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    main .control {
+        top: 180px;
+    }
+
+    /*관련메뉴*/
+    .related_menu_item .text_wrap .related_menu_title {
+        /* font-size: 9.2vw; */
+        font-size: 9vw;
+    }
+
+    .related_menu_item .text_wrap .related_menu_desc {
+        font-size: 4.2vw;
+        margin: 0 auto 8.8vw;
+    }
+
+    .related_menu_item .text_wrap .goto_ingredient {
+        font-size: 3.75vw;
+        width: 95px;
+    }
+
+    .related_menu .slide_pagination {
+        bottom: 16vh;
+    }
+
+    .related_menu .related_menu_control img {
+        width: 85%;
+    }
+
+    .related_menu .related_menu_control {
+        top: 34.5vh;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .related_menu_item .text_wrap .goto_ingredient {
+        width: 85px;
+    }
+
+    .related_menu .related_menu_control {
+        top: 35vh;
+    }
+
+    main .control {
+        top: 170px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    /*main .main_slide_pagination {
+        top: 290px !important;
+    }*/
+
+    main .control {
+        top: 155px;
+    }
+}
+
+@media screen and (min-width: 415px) {
+    main .main_slide_pagination .main_slide_dot:hover {
+        background: #000;
+    }
+}

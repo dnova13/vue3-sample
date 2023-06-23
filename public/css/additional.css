@@ -1,0 +1,267 @@
+/* 페이지 페이드 전환효과 */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.28s ease-in-out;
+}
+.fade-enter,
+.fade-enter-to,
+.fade-leave,
+.fade-leave-to {
+    opacity: 0;
+    display: block;
+}
+
+/* 이미지 드래그 막기 */
+.stop-dragging {
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+} */
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    /* font-family: 'Pretendard'; */
+}
+
+.ingredient_detail {
+    /* margin-bottom: 40px; */
+    /* padding-bottom: 40px; */
+}
+
+.main_menu_link > div.img_wrap > img {
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
+    object-fit: fill;
+    /* aspect-ratio: 1 / 1; */
+}
+
+.box {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 95%;
+}
+
+.sesarch_contained_menu {
+    margin-bottom: 24px;
+}
+
+.chef_img {
+    /* height: 550px;
+    width: 326px;
+    border-radius: 50% / 30%; */
+    /* height: 420px;
+    width: 326px; */
+    /* height: 400px;
+    width: 310px; */
+    height: 437px;
+    width: 330px;
+    border-radius: 60% / 42%;
+}
+
+.restaurant_about_title .text_sm {
+    white-space: pre;
+}
+
+.search_menu .about_menu_wrap .about_menu_sub .text_sm {
+    white-space: pre;
+}
+
+.logo_wrap > a > img {
+    width: 98px;
+    /* height: 27px; */
+}
+
+div.search_wrap.header_search > img,
+.search_btn > img {
+    width: 18px;
+}
+
+.my_wrap.header_my img {
+    height: 18px;
+    width: 15px;
+}
+
+/* 일주일 동안 보지않기 */
+/* 체크박스 디자인 */
+input[type='checkbox'] {
+    /* appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer; */
+}
+
+input[type='checkbox']:checked {
+    /* background-color: #2196f3;
+    border-color: #2196f3; */
+}
+
+/* 체크박스 이미 체크된 상태일 때 체크 모양 변경 */
+input[type='checkbox']:checked:after {
+    /* content: '';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 9px;
+    width: 6px;
+    height: 14px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg); */
+}
+
+/* 체크박스 라벨 디자인 */
+.hide-week-wrap {
+    /* display: inline-block; */
+    position: relative;
+    font-size: 12px;
+    margin-top: 15px;
+    cursor: pointer;
+    /* font-weight: 300; */
+    color: rgb(95, 95, 95);
+    /* margin-right: auto; */
+}
+
+.hide-week-wrap span {
+    position: relative;
+    /* top: -2px; */
+    top: -2.5px;
+}
+
+/* 증빙 서류 zoom in btn */
+.zoom-in-wrap {
+    position: absolute;
+    /* right: 13%;
+    bottom: 25px; */
+    /* padding: 5px; */
+    /* display: none; */
+    right: 15%;
+    bottom: 3vh;
+}
+/* YJ SEOL 230508 미디어쿼리 추가 */
+@media all and (min-width: 451px) and (max-width: 768px) {
+    .zoom-in-wrap {
+        right: 10%;
+        bottom: 10%;
+    }
+    .img_title {
+        font-size: 10px;
+        margin: 3px;
+    }
+}
+@media all and (min-width: 281px) and (max-width: 450px) {
+    .zoom-in-wrap {
+        right: 10%;
+        bottom: 3.5vh;
+    }
+
+    .img_title {
+        font-size: 10px;
+        margin: 3px;
+    }
+}
+/* 갤럭시폴드.ver */
+@media all and (min-width: 0px) and (max-width: 280px) {
+    .zoom-in-wrap {
+        right: 13%;
+        bottom: 13%;
+    }
+    .zoom-in-icon {
+        width: 12px;
+    }
+}
+/* 230509 YJ SEOL 증빙자료 test */
+.box.test {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.test-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+/* 증빙자료 title */
+.img_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    left: 24%;
+    margin-bottom: 4px;
+    background-color: var(--key-color);
+    color: #fff;
+    /* font-size: 12px; */
+    width: fit-content;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 14px;
+}
+.zoom-in-icon {
+    height: 15px;
+    width: 15px;
+}
+
+.update-date {
+    margin-top: 60px;
+    font-weight: 500;
+    font-size: 11px;
+    text-align: right;
+    color: #b7b7b7;
+    padding-right: 5px;
+}
+
+/* 소개 상세 이미지 */
+.intro-image {
+    margin-bottom: 25px;
+    border: solid 1px #ddd;
+    /* solid 1px #ddd */
+}
+
+.intro-image img {
+    width: 100%;
+}
+
+/* 터치 유무를 통한 pc, 모바일 구별 */
+/* PC용 스타일 */
+@media (pointer: fine) {
+    .related_menu_control,
+    .restaurant_slide_controls {
+        display: block;
+    }
+
+    .related_menu_item .text_wrap .related_menu_title {
+        margin-top: 12px;
+    }
+}
+
+/* 모바일 장치용 스타일 */
+@media (pointer: coarse) {
+    /* 모바일 장치용 스타일을 여기에 작성하세요 */
+    .related_menu_control,
+    .restaurant_slide_controls {
+        display: none;
+    }
+}
