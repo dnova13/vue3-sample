@@ -2,7 +2,12 @@
     원산지(origin) 페이지 view 
 */ -->
 <template>
-    <origin-detail :menuInfo="menuInfo" :mainOriginList="mainOriginList" :shopInfo="shopInfo">
+    <origin-detail
+        :menuInfo="menuInfo"
+        :mainOriginList="mainOriginList"
+        :shopInfo="shopInfo"
+        :menuList="menuList"
+    >
     </origin-detail>
 </template>
 

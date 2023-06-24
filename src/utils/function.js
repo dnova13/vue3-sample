@@ -256,6 +256,8 @@ export function setCookie(name, value, hours) {
     const date = new Date()
     let cookieValue = encodeURIComponent(value) + '; '
 
+    // console.log('cookieValue', cookieValue)
+
     if (hours) {
         date.setTime(date.getTime() + hours * 60 * 60 * 1000)
         // date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -286,6 +288,8 @@ export function getCookie(name) {
 
 // 쿠키 삭제하기
 export function deleteCookie(name) {
+    console.log('del', name)
+
     document.cookie = name + '=; Max-Age=-99999999;'
 }
 
@@ -351,17 +355,19 @@ export function importFilesInFolder(ext, files) {
     let modules = {}
 
     files.keys().forEach((key) => {
-        let pattern = new RegExp(`(\\.\\/|\\.${ext})`, 'g')
+        let pattern = new RegExp(`\\.${ext}$`)
 
-        // 파일 이름에서 './'과 '.vue'를 제거하여 모듈 이름을 추출합니다.
-        let moduleName = key.replace(pattern, '')
-        moduleName = kebabToCamel(moduleName)
+        if (pattern.test(key)) {
+            pattern = new RegExp(`(\\.\\/|\\.${ext})`, 'g')
 
-        // 파일을 해당 모듈 이름으로 가져옵니다.
-        modules[moduleName] = files(key).default
+            // 파일 이름에서 './'과 '.vue'를 제거하여 모듈 이름을 추출합니다.
+            let moduleName = key.replace(pattern, '')
+            moduleName = kebabToCamel(moduleName)
+
+            // 파일을 해당 모듈 이름으로 가져옵니다.
+            modules[moduleName] = files(key).default
+        }
     })
-
-    // console.log(modules)
 
     return modules
 }

@@ -87,7 +87,7 @@ export default {
         // guide 숨김
         hideGuide() {
             const splash = document.querySelector('.splash')
-            splash.classList.add('fadeOut')
+            splash?.classList.add('fadeOut')
 
             scrollOn()
 

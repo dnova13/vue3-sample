@@ -216,7 +216,7 @@ export default {
             }
         }, */
         goToPage(pageId, tabIndex) {
-            const code = this.companyCode || this.$route.companyCode
+            const code = this.companyCode || this.$route.query.companyCode
             let path = ''
             // let consoleText = '';
 

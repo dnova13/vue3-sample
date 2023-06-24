@@ -13,11 +13,9 @@ export default {
         return {}
     },
     computed: {},
-    created() {
-        console.log(this.$route)
-    },
+    created() {},
     mounted() {
-        this.$emit('setTrigger', '/login')
+        // this.$emit('setTrigger', '/login')
     },
     methods: {},
 }

@@ -127,38 +127,3 @@ input::placeholder {
     text-decoration: underline;
     font-weight: bold;
 }
-
-/* 추가정보 입력 */
-.gender-wrap {
-    margin-bottom: 5px;
-}
-
-.gender-wrap.error {
-    color: red;
-}
-
-.gender-radio {
-    display: flex;
-    align-items: center;
-    /* margin-bottom: 40px; */
-}
-
-.gender-radio label {
-    margin-right: 10px;
-}
-
-.v-input.join-form {
-    margin-bottom: 4px;
-}
-
-/* v-text-field 에러 메세지 컬러 */
-.v-input__slot::after {
-    border-color: rgba(255, 0, 0, 0.7) !important;
-}
-
-.v-input__slot::before {
-    border-color: rgba(255, 0, 0, 0.7) !important;
-}
-.error--text {
-    color: rgba(255, 0, 0, 0.7) !important;
-}

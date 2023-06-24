@@ -5,48 +5,152 @@
 
 <script>
 import Loading from '@/components/utils/loading'
+import * as util from '@/utils/function.js'
+import { _xurl } from '#/localSettings.js'
 
 export default {
+    props: {},
     components: {
         Loading,
     },
     data() {
-        return {}
+        return {
+            rtype: '',
+        }
     },
     computed: {},
-    created() {
-        console.log(this.$route)
-        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    async created() {
+        this.rtype = this.$route.params.str
+        const code = this.$route.query.code
+        let preCode = ''
+
+        if (!this.rtype) {
+            alert('server error')
+            return
+        }
+
+        if (this.rtype === 'kakao') {
+            preCode = 'KK'
+        } else if (this.rtype === 'naver') {
+            preCode = 'NV'
+        }
+
+        const data = await this.getKakaoLoginInfo(code)
+
+        // console.log('CCCCCCCCCC', data)
+        const userInfo = {
+            userid: preCode + '-' + data.id,
+            rtype: this.rtype,
+            uname: data.kakao_account?.profile?.nickname,
+            email: data.kakao_account?.email,
+        }
+
+        this.ajaxFetchLogin(_xurl.signin, userInfo)
     },
-    mounted() {
-        this.$emit('setTrigger', '/loading')
+    mounted() {},
+    methods: {
+        async getKakaoLoginInfo(code) {
+            const auth_url = 'https://kauth.kakao.com/oauth/token'
 
-        // // 유저 로그인 or 추가정보입력으로 이동
-        // const externalData = this.$route.params.str;
+            let result = ''
+            const data = {
+                client_id: process.env.VUE_APP_KK_REST,
+                code: code,
+                grant_type: 'authorization_code',
+            }
 
-        // // 유저가 이미 가입된 회원인지 확인
-        // let userExists = false; //초기값 false로 설정
+            result = await util.ajaxFetchQuery(auth_url, 'POST', data)
 
-        // // 외부 서비스로부터 받은 정보 활용, 로그인 Or 추가정보 처리 수행
-        // if (!externalData) {
-        // 	// 외부서비스로부터 전달된 정보가 없는 경우, 에러 처리
-        // 	this.$router.push("/error");
-        // } else {
-        // 	// 유저가 이미 가입된 회원인지 확인
-        // 	console.log("Checking user existence...");
-        // 	// const userExists = checkUserExists(externalData);
-        // 	userExists = true; // 임시로 true로 설정하여 가입된 회원으로 처리
+            if (!result.ok) {
+                alert('server error')
+                return
+            }
 
-        // 	if (userExists) {
-        // 		// 이미 가입된 회원일 경우, 로그인
-        // 		loginUser(externalData);
-        // 	} else {
-        // 		// 신규 유저인 경우, 회원가입 페이지로 안내
-        // 		this.$router.push("/addUserInfo");
-        // 	}
-        // }
+            result = await result.json()
+            const accToken = result.access_token
+
+            Kakao.init(process.env.VUE_APP_KK_CLIENT)
+            Kakao.Auth.setAccessToken(accToken)
+
+            try {
+                result = await Kakao.API.request({
+                    url: '/v2/user/me',
+                    data: {
+                        property_keys: [
+                            'kakao_account.profile',
+                            'kakao_account.name',
+                            'kakao_account.email',
+                            'kakao_account.age_range',
+                            'kakao_account.gender',
+                            'kakao_account.birthyear',
+                            'kakao_account.birthday',
+                            // 'kakao_account.phone_number',
+                        ],
+                    },
+                })
+            } catch (error) {
+                alert('server error')
+                return
+            }
+            console.log(result)
+            return result
+        },
+        ajaxFetchLogin(_url, userinfo) {
+            util.ajaxFetchJson(_url, 'POST', userinfo).then(async (res) => {
+                if (res.ok) {
+                    let result = await res.json()
+
+                    // util.setCookie('token', result.profile.token)
+                    localStorage.setItem('token', result.profile.token)
+                    this.goMain()
+                    return
+                }
+
+                if (res.status == 401) {
+                    const data = {
+                        uid: userinfo.userid,
+                        rtype: userinfo.rtype,
+                        uname: userinfo.uname,
+                        email: userinfo.email ? userinfo.email : '',
+                        phone: userinfo.phone ? userinfo.phone : '',
+                        birthday: userinfo.birthday ? userinfo.birthday : '',
+                        gender: userinfo.gender ? userinfo.gender : '',
+                    }
+
+                    this.goJoin(null, data)
+                } else {
+                    alert('server error')
+                }
+            })
+        },
+        goMain(companyCode, data) {
+            let code = companyCode || this.$route.query.companyCode
+
+            this.$router
+                .push({
+                    path: '/',
+                    query: {
+                        companyCode: code,
+                    },
+                })
+                .catch(() => {})
+        },
+        goJoin(companyCode, data) {
+            let code = companyCode || this.$route.query.companyCode
+            let path = '/addUserInfo'
+
+            this.$router
+                .push({
+                    path,
+                    name: 'addUserInfo',
+                    query: {
+                        companyCode: code,
+                    },
+                    params: data,
+                })
+                .catch(() => {})
+        },
     },
-    methods: {},
 }
 </script>
 

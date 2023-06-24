@@ -10,43 +10,45 @@
                     <v-text-field
                         v-if="!email"
                         v-model="form.email"
-                        class="join-form"
+                        class="add-form"
                         :label="formObj.email.label"
                         placeholder="이메일을 입력하세요"
                         style="min-width: 290px"
-                        outlined
+                        variant="outlined"
                         clearable
                         required
                         :rules="formObj.email.rules"
                     ></v-text-field>
                     <v-text-field
+                        v-if="!phone"
                         v-model="form.phone"
-                        class="join-form"
+                        class="add-form"
                         :label="formObj.phone.label"
                         placeholder="'-'를 제외한 숫자만 입력하세요"
                         style="min-width: 290px"
-                        outlined
+                        variant="outlined"
                         maxlength="14"
                         clearable
                         required
                         :rules="formObj.phone.rules"
                         @input="addHyphenToPhone"
                     ></v-text-field>
+                    <!-- type="date" -->
                     <v-text-field
+                        v-if="!birthday"
                         v-model="form.birthday"
-                        class="join-form"
+                        class="add-form"
                         :label="formObj.birthday.label"
-                        type="date"
                         placeholder="'-'를 제외한 숫자만 입력하세요"
                         style="min-width: 290px"
-                        outlined
-                        :min="minDate"
-                        :max="maxDate"
+                        variant="outlined"
+                        maxlength="10"
                         clearable
                         required
-                        :rules="[...formObj.birthday.rules, checkBirthdayRange]"
+                        :rules="[...formObj.birthday.rules, checkBirthdayRange, checkValidDate]"
+                        @input="addHyphenToBirthday"
                     ></v-text-field>
-                    <div class="gender-wrap" :class="formObj.gender.error ? 'error' : ''">
+                    <div v-if="!gender" class="gender-wrap" :class="formObj.gender.error ? 'error' : ''">
                         <div class="gender-radio" style="margin-bottom: 8px">
                             <label for="gender">{{ formObj.gender.label }} : </label>
                             <div>
@@ -72,7 +74,8 @@
                         </div>
                         <div
                             v-if="formObj.gender.error"
-                            class="v-messages theme--light v-messages__message message-transition-enter-to error--text"
+                            class="pl-2 v-messages v-messages__message .v-input__details"
+                            style="font-weight: 700; letter-spacing: 0.4px"
                         >
                             {{ formObj.gender.warningText }}
                         </div>
@@ -123,6 +126,18 @@ export default {
         email: {
             type: String,
             default: '',
+        },
+        phone: {
+            type: String,
+            default: '',
+        },
+        birthday: {
+            type: String,
+            default: '',
+        },
+        gender: {
+            type: String,
+            default: null,
         },
     },
     data() {
@@ -176,18 +191,50 @@ export default {
     computed: {
         checkBirthdayRange() {
             return this.form.birthday < this.minDate || this.form.birthday > this.maxDate
-                ? `${this.minDate} ~ ${this.maxDate} 로 입력하세요.`
+                ? `${this.minDate} ~ ${this.maxDate}의 날짜를 입력하세요.`
                 : true
+        },
+        checkValidDate() {
+            if (this.form?.birthday?.length === 10) {
+                // console.log('sdfgdfsgdf')
+
+                const [year, month, day] = this.form.birthday.split('-')
+                const date = new Date(year, month - 1, day)
+
+                const inputYear = date.getFullYear()
+                const inputMonth = date.getMonth() + 1
+                const inputDay = date.getDate()
+
+                if (
+                    parseInt(year) === inputYear &&
+                    parseInt(month) === inputMonth &&
+                    parseInt(day) === inputDay
+                ) {
+                    return true
+                }
+
+                return '올바른 날짜를 입력하세요.'
+            }
+
+            return true
         },
     },
     created() {
         this.form.email = this.email
+        this.form.phone = this.phone
+        this.form.birthday = this.birthday
+        this.form.gender = this.gender
+
+        // console.log(this.email, this.phone, this.birthday, this.gender)
+        // console.log(this.form)
     },
     mounted() {
         this.$emit('setTrigger', '/join')
     },
     methods: {
         submitForm() {
+            // console.log('AAAAAAAAAAAAAA')
+
             this.$refs.form.validate()
 
             if (this.form.gender) {
@@ -199,14 +246,18 @@ export default {
             this.valid =
                 this.valid && this.form.gender && this.form.agreeToTerms && this.form.agreeToPrivacyPolicy
 
+            // console.log('this.valid', this.valid)
+
             // ajax 출력
             if (this.valid) {
                 let data = {
                     ID: this.uid,
                     rtype: this.rtype,
                     mail: this.form.email,
-                    phone: this.form.phone.replaceAll('-', ''),
-                    birth: this.form.birthday.replaceAll('-', ''),
+                    phone: this.form.phone,
+                    birth: this.form.birthday,
+                    // phone: this.form.phone.replaceAll('-', ''),
+                    // birth: this.form.birthday.replaceAll('-', ''),
                     gender: this.form.gender,
                     username: this.uname,
                 }
@@ -221,17 +272,21 @@ export default {
                             return
                         }
 
+                        localStorage.setItem('token', result.profile.token)
                         this.goHome()
-                        util.setCookie('token', result.profile.token)
+                        // util.setCookie('token', result.profile.token)
                     } else {
                         alert('server error')
                     }
                 })
+            } else {
+                alert('올바르게 입력해주세요.')
             }
         },
         inputOnlyNumber(v) {},
         addHyphenToPhone() {
-            this.form.phone = this.form.phone.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+            // this.form.phone = this.form.phone.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+            this.form.phone = this.form.phone.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')
 
             let phone = this.form.phone
             this.form.phone = this.form.phone.trim()
@@ -249,7 +304,7 @@ export default {
             }
         },
         addHyphenToBirthday() {
-            let birthday = this.form.birthday.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+            let birthday = this.form.birthday.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1')
 
             if (birthday.length <= 4) {
                 this.form.birthday = birthday
@@ -291,3 +346,40 @@ export default {
     },
 }
 </script>
+<style scoped>
+.add-form {
+    margin-bottom: 14px;
+}
+
+/* 추가정보 입력 */
+.gender-wrap {
+    margin-bottom: 5px;
+}
+
+.gender-wrap.error {
+    /* color: #b00020; */
+    color: #830018;
+}
+
+.gender-radio {
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 40px; */
+}
+
+.gender-radio label {
+    margin-right: 10px;
+}
+
+/* v-text-field 에러 메세지 컬러 */
+/* .v-input__slot::after {
+    border-color: rgba(255, 0, 0, 0.7) !important;
+}
+
+.v-input__slot::before {
+    border-color: rgba(255, 0, 0, 0.7) !important;
+}
+.error--text {
+    color: rgba(255, 0, 0, 0.7) !important;
+} */
+</style>

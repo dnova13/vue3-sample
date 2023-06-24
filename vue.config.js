@@ -11,12 +11,15 @@ console.log('### baseUrl', baseUrl)
 // path.resolve(__dirname, 'public/img')
 
 module.exports = defineConfig({
+    devServer: {
+        port: 5503,
+    },
     transpileDependencies: true,
     publicPath: baseUrl,
     // publicPath: '/dining/',
     outputDir: 'dist',
     // assetsDir: 'static', // 설정 안할 경우 public 폴더에서 셋팅
-    runtimeCompiler: true,
+    // runtimeCompiler: true,
     configureWebpack: {
         resolve: {
             alias: {

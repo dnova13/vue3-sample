@@ -152,8 +152,12 @@ export default {
         this.originLength = productCodeArr.length
         let cachedOriginList = this.getCacheOriginData(this.companyCode, this.menuCode)
 
+        // console.log('a: productCodeArr', productCodeArr)
+        // console.log('########## this.originList', this.originList)
+
         if (cachedOriginList) {
             this.originList = cachedOriginList
+            // console.log('cach this.originList', this.originList)
             return
         }
 
@@ -211,9 +215,9 @@ export default {
 
             if (this.originCnt === this.originLength) {
                 this.originList = [...this.tempList]
-                this.setCacheOriginData(this.companyCode, this.menuCode, this.originList)
 
-                // this.checkPoint = this.originList[0].summaries;
+                // console.log('this.originList', this.originList)
+                this.setCacheOriginData(this.companyCode, this.menuCode, this.originList)
             }
             // console.log('this.originList', this.originList);
         },
@@ -335,6 +339,8 @@ export default {
                 isX = true
 
             const pagination = document.querySelector('.main_dots')
+            pagination.innerHTML = ''
+
             const dots = document.getElementsByClassName('main_slide_dot')
 
             /* Create pager dot */

@@ -271,12 +271,13 @@ export default {
         },
         // /login path로 이동
         goMypage(companyCode) {
-            const tk = getCookie('token')
+            // const tk = getCookie('token')
+            const tk = localStorage.getItem('token')
 
             let code = companyCode || this.$route.query.companyCode
             let path = code ? (tk ? '/mypage' : '/login') : '/error'
 
-            console.log('path', path)
+            // console.log('path', path)
 
             this.$router
                 .push({

@@ -119,7 +119,8 @@ export default {
                 .catch(() => {})
         },
         logOut() {
-            util.deleteCookie('token')
+            localStorage.removeItem('token')
+            // util.deleteCookie('token')
             this.goHome()
         },
     },

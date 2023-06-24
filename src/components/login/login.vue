@@ -46,7 +46,7 @@
 <script>
 // import addUserInfo from '@/components/add-userinfo'
 import * as util from '@/utils/function.js'
-import { _xurl, authKey } from '#/localSettings.js'
+import { _xurl } from '#/localSettings.js'
 
 const hostUrl = location.protocol + '//' + location.host
 export default {
@@ -63,9 +63,7 @@ export default {
             const preKakao = 'KK'
             const rdUrl = hostUrl + '/callback/kakao'
 
-            if (!Kakao.isInitialized()) Kakao.init(authKey.KK_CLIENT)
-            // Kakao.isInitialized();
-            // console.log('host', host);
+            if (!Kakao.isInitialized()) Kakao.init(process.env.VUE_APP_KK_CLIENT)
 
             Kakao.Auth.authorize({
                 redirectUri: rdUrl,
@@ -89,28 +87,19 @@ export default {
             // naverLogin.setPopup();
             naverLogin.init_naver_id_login()
 
-            // let naverLogin = new naver.LoginWithNaverId({
-            // 	clientId: cid,
-            // 	callbackUrl: url,
-            // 	isPopup: false,
-            // 	callbackHandle: false,
-            // 	// loginButtonHandler.use:  true ,
-            // });
-
-            // naverLogin.init();
-
             localStorage.setItem('ccode', this.$route.query.companyCode)
-            // console.log(naverLogin);
-            // naverLogin.click();
         },
         googleLogin() {
+            document.cookie = 'g_state=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+
             google.accounts.id.initialize({
-                client_id: authKey.GG_CLIENT,
+                client_id: process.env.VUE_APP_GG_CLIENT,
                 callback: this.cbSigninGoogle,
             })
 
             google.accounts.id.prompt(() => {
-                util.deleteCookie('g_state')
+                document.cookie = 'g_state=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+                // util.deleteCookie('g_state')
             })
         },
         cbSigninGoogle(res) {
@@ -120,7 +109,7 @@ export default {
             // console.log(responsePayload);
 
             const userinfo = {
-                userid: prepGoogle + responsePayload.sub,
+                userid: prepGoogle + '-' + responsePayload.sub,
                 rtype: 'google',
             }
 
@@ -128,7 +117,8 @@ export default {
                 if (res.ok) {
                     let result = await res.json()
 
-                    util.setCookie('token', result.profile.token)
+                    localStorage.setItem('token', result.profile.token)
+                    // util.setCookie('token', result.profile.token)
                     this.goMain()
                     return
                 }

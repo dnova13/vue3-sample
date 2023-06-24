@@ -8,17 +8,17 @@
                 :shop-info="shopInfo"
             ></home-splash>
             <tap-top :menu-list="menuList" :shop-info="shopInfo" @setTrigger="setTrigger"></tap-top>
-            <transition name="fade">
-                <router-view
-                    v-if="onScreen"
-                    :menu-list="menuList"
-                    :menu-info="menuInfo"
-                    :shop-info="shopInfo"
-                    :main-origin-list="mainOriginList"
-                    @setTrigger="setTrigger"
-                >
-                </router-view>
-            </transition>
+            <!-- <transition name="fade"> -->
+            <router-view
+                v-if="onScreen"
+                :menu-list="menuList"
+                :menu-info="menuInfo"
+                :shop-info="shopInfo"
+                :main-origin-list="mainOriginList"
+                @setTrigger="setTrigger"
+            >
+            </router-view>
+            <!-- </transition> -->
             <mainNav
                 ref="mainNav"
                 :shop-info="shopInfo"
@@ -98,13 +98,14 @@ export default {
         const queryStrings = getQueryStringObject() //for real server
         this.companyCode = queryStrings.companyCode
 
-        // TODO 나중에 콜백 쓸시 옮기기
         const companyCode = localStorage.getItem('ccode')
 
         if (companyCode) {
             queryStrings.companyCode = companyCode
             localStorage.removeItem('ccode')
         }
+
+        console.log('queryStrings', queryStrings)
 
         // urlMenuList = urlMenuList.replace('companyCode', queryStrings.companyCode);
         callAjax(urlMenuList, queryStrings, this, this.getData, this.isError)
@@ -176,7 +177,7 @@ export default {
                 this.onIntro = true
 
                 /* todo 나중에 주석 */
-                // this.onIntro = false;
+                this.onIntro = false
                 this.goHome(param.companyCode)
             } else {
                 this.onScreen = false
@@ -622,41 +623,6 @@ export default {
                 this.$refs.mainNav.hideCategory = false
             }
         },
-        async getKakaoLoginInfo(code) {
-            const auth_url = 'https://kauth.kakao.com/oauth/token'
-
-            let result = ''
-            const data = {
-                client_id: authKey.KK_REST,
-                code: code,
-                grant_type: 'authorization_code',
-            }
-
-            result = await ajaxFetchQuery(auth_url, 'POST', data)
-
-            if (!result.ok) {
-                alert('server error')
-                return
-            }
-
-            result = await result.json()
-            const accToken = result.access_token
-
-            Kakao.init(authKey.KK_CLIENT)
-            Kakao.Auth.setAccessToken(accToken)
-
-            Kakao.API.request({
-                url: '/v2/user/me',
-            })
-                .then(function (response) {
-                    console.log(response)
-                    return response
-                })
-                .catch(function (err) {
-                    alert('server error')
-                    return
-                })
-        },
     },
 }
 </script>
@@ -670,4 +636,19 @@ export default {
     color: #2c3e50;
     margin-top: 60px;
 } */
+</style>
+<style scoped>
+/* 페이지 페이드 전환효과 */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-enter,
+.fade-enter-to,
+.fade-leave,
+.fade-leave-to {
+    opacity: 0;
+    display: block;
+}
 </style>

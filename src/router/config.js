@@ -1,12 +1,15 @@
 import diningViews from '@/views/dining'
 import homeViews from '@/views/homeViews'
 import intro from '@/views/intro'
-import { myPageView } from '@/views/myPage'
+import myPage from '@/views/myPage'
 
 // review import
-import { reviewView } from '@/views/review'
+import review from '@/views/review'
+// import reviewView1 from '@/views/review'
 import reviewComp from '@/components/review'
 import myPageComp from '@/components/myPage'
+
+// console.log('myPageView222', myPageView222)
 
 // login
 import loginViews from '@/views/login'
@@ -18,14 +21,14 @@ import error from '@/components/error/error-comp'
 // console.log(loginComp)
 
 export const publicRoute = [
-    // { path: '/', name: 'base', component: AddUserInfo }, // 230522 home 컴포넌트 origin comp 로 변경
+    // { path: '/', name: 'base', component: loginViews.addUserinfoView }, // 230522 home 컴포넌트 origin comp 로 변경
     // dining
     {
         path: '/',
         name: 'base',
-        // component: () => import('@/components/HelloWorld'),
         component: homeViews.homeScreen,
     },
+    // { path: '/home', name: 'home', component: diningViews.originView },
     { path: '/home', name: 'home', component: homeViews.homeScreen },
     // { path: '/main', name: 'mainHome', component: homeViews.mainHome },
 
@@ -43,10 +46,10 @@ export const publicRoute = [
     { path: '/diningMap', name: 'diningMap', component: diningViews.diningMap },
 
     // // mypage
-    { path: '/mypage', name: 'myPageView', component: myPageView },
+    { path: '/mypage', name: 'myPageView', component: myPage.myPageView },
 
     // // 리뷰 라우터
-    { path: '/review', name: 'reviewView', component: reviewView },
+    { path: '/review', name: 'reviewView', component: review.reviewView },
     { path: '/my-review', name: 'myReview', component: reviewComp.myReview },
     { path: '/boss-review', name: 'ceoReview', component: reviewComp.bossReview },
     { path: '/add-review', name: 'addReview', component: reviewComp.addReview },
@@ -69,12 +72,12 @@ export const publicRoute = [
     {
         path: '/addUserInfo',
         name: 'addUserInfo',
-        component: loginViews.addUserInfo,
+        component: loginViews.addUserinfoView,
         props: true,
     },
 
     // // etc
-    { path: '/callback/:str', name: 'callback', component: loginViews.callbackView },
+    { path: '/callback/:str', name: 'callback', component: loginViews.callbackView, props: true },
     // { path: '/callback/:str', name: 'callback', component: notFound },
     // { path: '/callback/kakao', name: 'callback', component: loginViews.callBackView },
     // { path: '/loading', name: 'loading', component: Loading },
