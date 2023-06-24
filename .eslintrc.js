@@ -13,6 +13,7 @@ module.exports = {
         // '@vue/prettier',
     ],
     rules: {
+        'vue/no-v-for-template-key': 'off', // vue2는 안되지만 vue3는 가능
         'no-console': 'off',
         'no-debugger': 'off',
         'no-unused-vars': 1,
@@ -24,28 +25,25 @@ module.exports = {
         'vue/require-default-prop': 'off',
         'vue/multi-word-component-names': 'off',
         'vue/html-indent': 'off',
-        // 'vue/html-indent': [
+        'vue/html-closing-bracket-newline': 'off',
+        'vue/singleline-html-element-content-newline': 'off',
+        'vue/attribute-hyphenation': 'off', // vue attribute 하이픈 경고 off
+        'no-unused-vars': 'off',
+        'vue/no-unused-vars': 'off',
+        // 'vue/html-closing-bracket-newline': [
         //     'error',
-        //     type,
         //     {
-        //         attribute: 1,
-        //         baseIndent: 1,
-        //         closeBracket: 0,
-        //         alignAttributesVertically: true,
-        //         ignores: [],
+        //         singleline: 'never',
+        //         multiline: 'always',
         //     },
         // ],
-        'vue/html-closing-bracket-newline': [
-            'error',
-            {
-                singleline: 'never',
-                multiline: 'always',
-            },
-        ],
     },
-    // parser: 'vue-eslint-parser',
+    parser: 'vue-eslint-parser',
+    // parser: '@babel/eslint-parser',
     parserOptions: {
         parser: '@babel/eslint-parser',
         sourceType: 'module',
     },
+    // "printWidth": 200,
+    // "printWidth": 100,
 }

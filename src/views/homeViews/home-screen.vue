@@ -11,19 +11,16 @@
 </template>
 
 <script>
-import originDetail from '@/components/origin-detail.js'
-import {
-    callAjax,
-    getQueryStringObject,
-    scrollTo,
-    scrollOn,
-    scrollOff,
-} from '@/utils/function.js'
-import { _xurl } from '@/localSettings.js'
+import originDetail from '@/components/origin/origin-detail'
+import { callAjax, getQueryStringObject, scrollTo, scrollOn, scrollOff } from '@/utils/function.js'
+import { _xurl } from '#/localSettings.js'
 
 let urlOriginList = _xurl.origin_list
 
 export default {
+    components: {
+        originDetail,
+    },
     props: [
         'menuList',
         'mainOriginList',

@@ -1,4 +1,4 @@
-import { imgUrl } from '../localSettings.js' // 주 이미지 url
+import { imgUrl } from '#/localSettings.js' // 주 이미지 url
 
 // ajax function
 export const callAjax = function (url, param, vueComponent, ajaxDone, ajaxFail, idx) {
@@ -320,4 +320,48 @@ export function getMaxDate(_year) {
     }
 
     return `${year}-${month}-${day}`
+}
+
+export function kebabToCamel(kebabCase) {
+    let words = kebabCase
+
+    try {
+        let wordArr = kebabCase.split('-') // 하이픈을 기준으로 단어를 분리합니다
+        let camelCase =
+            wordArr[0] +
+            wordArr
+                .slice(1)
+                .map(function (v) {
+                    return v.charAt(0).toUpperCase() + v.slice(1)
+                })
+                .join('')
+
+        words = camelCase
+    } catch (error) {}
+
+    return words
+}
+
+// ext : 가져올 확장자
+export function importFilesInFolder(ext, files) {
+    // 폴더 내 파일을 가져오기 위해 require.context를 사용
+    // require.context : 정적 사용이라서 정규식에서는 변수 패턴 사용이 안됨.
+    // const files = require.context('./', true, /\.(js|jsx|ts|tsx|vue)$/)
+
+    let modules = {}
+
+    files.keys().forEach((key) => {
+        let pattern = new RegExp(`(\\.\\/|\\.${ext})`, 'g')
+
+        // 파일 이름에서 './'과 '.vue'를 제거하여 모듈 이름을 추출합니다.
+        let moduleName = key.replace(pattern, '')
+        moduleName = kebabToCamel(moduleName)
+
+        // 파일을 해당 모듈 이름으로 가져옵니다.
+        modules[moduleName] = files(key).default
+    })
+
+    // console.log(modules)
+
+    return modules
 }
