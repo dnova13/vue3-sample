@@ -13,7 +13,7 @@
                 </a>
             </div>
             <div class="my_wrap header_my">
-                <img src="/img/nav_bar_icon/nav_my_on.svg" alt="myPage" @click="goMypage()" />
+                <img src="img/nav_bar_icon/nav_my_on.svg" alt="myPage" @click="goMypage()" />
             </div>
         </div>
         <!--검색버튼 클릭시 노출 메뉴-->

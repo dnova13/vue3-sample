@@ -21,7 +21,8 @@ export const publicRoute = [
     {
         path: '/',
         name: 'base',
-        component: () => import('@/components/HelloWorld'),
+        // component: () => import('@/components/HelloWorld'),
+        component: homeViews.homeScreen,
     },
     { path: '/home', name: 'home', component: homeViews.homeScreen },
     // { path: '/main', name: 'mainHome', component: homeViews.mainHome },
