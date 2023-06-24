@@ -321,6 +321,7 @@ export default {
 
             if (this.$route.path === '/login' || this.$route.path.includes('/callback/')) {
                 path = this.$route.path
+
                 this.onIntro = false
             }
 

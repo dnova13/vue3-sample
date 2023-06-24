@@ -17,10 +17,10 @@
         </div>
         <ul id="dots" class="dot-slide slide_pagination"></ul>
         <a class="control prev related_menu_control">
-            <img src="img/sub_slide_arrow.png" alt="" />
+            <img src="@img/sub_slide_arrow.png" alt="" />
         </a>
         <a class="control next related_menu_control">
-            <img src="img/sub_slide_arrow.png" alt="" />
+            <img src="@img/sub_slide_arrow.png" alt="" />
         </a>
     </div>
 </template>

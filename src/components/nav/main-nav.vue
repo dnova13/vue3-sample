@@ -28,12 +28,10 @@
                             "
                         >
                             <div class="icon">
-                                <!--
-                            <img :src="tab.icon" 
-                            :class="idx === 4 ? 'map' : ''"
-                            >
-                            -->
-                                <img :src="tab.icon" :class="{ owner: idx === 1, map: idx === 4 }" />
+                                <img
+                                    :src="baseUrl + tab.icon"
+                                    :class="{ owner: idx === 1, map: idx === 4 }"
+                                />
                             </div>
                             <div class="title">
                                 <span>{{ tab.title }}</span>
@@ -54,11 +52,11 @@
                     >
                         <router-link v-if="icon.external === false" :to="{ name: 'diningMap' }">
                             <a class="icon">
-                                <img :src="icon.icon" />
+                                <img :src="baseUrl + icon.icon" />
                             </a>
                         </router-link>
                         <a v-else class="icon" :href="icon.url" target="_blank">
-                            <img :src="icon.icon" />
+                            <img :src="baseUrl + icon.icon" />
                         </a>
                         <div class="title">
                             <span>{{ icon.title }}</span>
@@ -75,6 +73,7 @@ export default {
     props: ['shopInfo'],
     data() {
         return {
+            baseUrl: process.env.VUE_APP_BASE_URL,
             hideCategory: false,
             // hideCategory: true,
             preHeight: null,
@@ -85,37 +84,37 @@ export default {
                 {
                     id: 'dining-intro',
                     title: '다이닝소개',
-                    icon: './img/nav_bar_icon/nav_dining_intro_off.svg',
+                    icon: 'img/nav_bar_icon/nav_dining_intro_off.svg',
                 },
                 {
                     id: 'owner',
                     title: '점주소개',
-                    icon: './img/nav_bar_icon/nav_ceo_off.svg',
+                    icon: 'img/nav_bar_icon/nav_ceo_off.svg',
                 },
                 {
                     id: 'chef',
                     title: '셰프소개',
-                    icon: './img/nav_bar_icon/nav_chef_off.svg',
+                    icon: 'img/nav_bar_icon/nav_chef_off.svg',
                 },
                 {
                     id: 'home',
                     title: 'HOME',
-                    icon: './img/nav_bar_icon/nav_home_icon_on.svg',
+                    icon: 'img/nav_bar_icon/nav_home_icon_on.svg',
                 },
                 // {
                 // 	id: "diningMap",
                 // 	title: "다이닝맵",
-                // 	icon: "./img/nav_bar_icon/nav_map_off.svg",
+                // 	icon: "img/nav_bar_icon/nav_map_off.svg",
                 // },
                 {
                     id: 'review',
                     title: '매장리뷰',
-                    icon: './img/nav_bar_icon/nav_review_off.svg',
+                    icon: 'img/nav_bar_icon/nav_review_off.svg',
                 },
                 {
                     id: 'allCategory',
                     title: '더보기',
-                    icon: './img/nav_bar_icon/nav_all_menu_off.svg',
+                    icon: 'img/nav_bar_icon/nav_all_menu_off.svg',
                 },
             ],
             icons: [
@@ -130,28 +129,28 @@ export default {
                     id: 'safeean',
                     external: true,
                     title: '세이피안',
-                    icon: './img/allCategory/landing.svg',
+                    icon: 'img/allCategory/landing.svg',
                     url: 'http://www.safeean.com/',
                 },
                 {
                     id: 'shop',
                     external: true,
                     title: '안전식품몰',
-                    icon: './img/allCategory/shop.svg',
+                    icon: 'img/allCategory/shop.svg',
                     url: 'https://shop2.safeean.com/',
                 },
                 {
                     id: 'blog',
                     external: true,
                     title: '블로그',
-                    icon: './img/allCategory/blog.svg',
+                    icon: 'img/allCategory/blog.svg',
                     url: 'https://blog.naver.com/vadapf',
                 },
                 {
                     id: 'insta',
                     external: true,
                     title: '인스타',
-                    icon: './img/allCategory/instar.svg',
+                    icon: 'img/allCategory/instar.svg',
                     url: 'https://www.instagram.com/vadaro_safeean/',
                 },
             ],
@@ -192,29 +191,30 @@ export default {
         });
         */
 
-        this.preloadImages()
+        // this.preloadImages()
     },
     mounted() {
         // this.$emit('setTrigger', '/menu');
     },
     methods: {
         // 230524 YJ-SEOL 이미지 변경 속도 개선
-        preloadImages() {
+        // 일단 사용 안하므로 주석처리 230625 JHJUN
+        /* preloadImages() {
             const images = [
-                './img/nav_bar_icon/nav_dining_intro_on.svg',
-                './img/nav_bar_icon/nav_ceo_on.svg',
-                './img/nav_bar_icon/nav_chef_on.svg',
-                './img/nav_bar_icon/nav_home_icon_off.svg',
-                './img/nav_bar_icon/nav_map_on.svg',
-                './img/nav_bar_icon/nav_review_on.svg',
-                './img/nav_bar_icon/nav_all_menu_on.svg',
+                'img/nav_bar_icon/nav_dining_intro_on.svg',
+                'img/nav_bar_icon/nav_ceo_on.svg',
+                'img/nav_bar_icon/nav_chef_on.svg',
+                'img/nav_bar_icon/nav_home_icon_off.svg',
+                'img/nav_bar_icon/nav_map_on.svg',
+                'img/nav_bar_icon/nav_review_on.svg',
+                'img/nav_bar_icon/nav_all_menu_on.svg',
             ]
 
             for (let i = 0; i < images.length; i++) {
                 const image = new Image()
                 image.src = images[i]
             }
-        },
+        }, */
         goToPage(pageId, tabIndex) {
             const code = this.companyCode || this.$route.companyCode
             let path = ''

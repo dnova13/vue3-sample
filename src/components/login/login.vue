@@ -30,7 +30,7 @@
                     <button class="loginBtn" @click="loginBtn">로그인</button>
                 -->
             <button class="loginBtn kakao" @click="kakaoLogin">
-                <img src="/img/login/kakao_login_medium_wide.png" />
+                <img src="@img/login/kakao_login_medium_wide.png" />
             </button>
             <button class="loginBtn naver" @click="loginBtn('naver')" />
             <button class="loginBtn google" @click="googleLogin" />

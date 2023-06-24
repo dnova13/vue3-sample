@@ -1,10 +1,10 @@
 <template>
     <div class="step01">
         <div class="logo_wrap splash01">
-            <img src="img/splash_logo.png" alt="" />
+            <img src="@img/splash_logo.png" alt="" />
         </div>
         <div class="logo_wrap splash02">
-            <img :src="'img/logo/' + shopInfo?.biznum + '.png'" />
+            <img :src="`${baseUrl}img/logo/${shopInfo?.biznum}.png`" />
             <span v-if="!branchExceptionList.includes(shopInfo?.biznum)" class="branch">
                 {{ shopInfo?.branchName ? '[' + shopInfo?.branchName + ']' : '' }}
             </span>
@@ -15,7 +15,7 @@
         </div>
     </div>
     <!-- <div class="logo_wrap splash01">
-            <img src="img/splash_logo.png" alt="">
+            <img src="@img/splash_logo.png" alt="">
                 </div>
                     <div class="logo_wrap splash02">
                 <div v-if="">
@@ -34,6 +34,7 @@ export default {
             imgUrl: null,
             isImageLoaded: false,
             branchExceptionList: ['6408501954'],
+            baseUrl: process.env.VUE_APP_BASE_URL,
         }
     },
     created() {

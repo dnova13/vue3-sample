@@ -15,6 +15,8 @@ import loginComp from '@/components/login'
 import notFound from '@/components/error/not-found'
 import error from '@/components/error/error-comp'
 
+// console.log(loginComp)
+
 export const publicRoute = [
     // { path: '/', name: 'base', component: AddUserInfo }, // 230522 home 컴포넌트 origin comp 로 변경
     // dining
@@ -72,7 +74,9 @@ export const publicRoute = [
     },
 
     // // etc
-    { path: '/callback/:str', name: 'callback', component: loginViews.callBackView },
+    { path: '/callback/:str', name: 'callback', component: loginViews.callbackView },
+    // { path: '/callback/:str', name: 'callback', component: notFound },
+    // { path: '/callback/kakao', name: 'callback', component: loginViews.callBackView },
     // { path: '/loading', name: 'loading', component: Loading },
     { path: '/404', name: 'notFound', component: notFound },
     { path: '/error', name: 'error', component: error },

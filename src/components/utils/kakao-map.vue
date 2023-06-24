@@ -104,7 +104,7 @@ export default {
                         const markerPosition = new kakao.maps.LatLng(lat, lng)
 
                         // 마커 기본 이미지 변경
-                        const imageSrc = '/img/allCategory/dining_map_icon.svg'
+                        const imageSrc = process.env.VUE_APP_BASE_URL + '/img/allCategory/dining_map_icon.svg'
                         const imageSize = new window.kakao.maps.Size(34, 39) // 마커 이미지 크기
                         // const imageOption = {offset: new window.kakao.maps.Point(27, 69)}; // 마커이미지 옵션
 

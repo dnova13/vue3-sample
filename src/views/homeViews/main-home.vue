@@ -25,7 +25,7 @@
                     <h1>리뷰보기</h1>
                 </div>
                 <div class="reviewBtn">
-                    <img src="/img/mainHome/reviewIcon.png" />
+                    <img src="@img/mainHome/reviewIcon.png" />
                 </div>
             </div>
         </div>

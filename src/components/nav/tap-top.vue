@@ -9,11 +9,11 @@
             </div>
             <div class="logo_wrap">
                 <a @click="goHome()">
-                    <img src="img/header_logo.png" alt="Safeean" />
+                    <img src="@img/header_logo.png" alt="Safeean" />
                 </a>
             </div>
             <div class="my_wrap header_my">
-                <img src="img/nav_bar_icon/nav_my_on.svg" alt="myPage" @click="goMypage()" />
+                <img src="@img/nav_bar_icon/nav_my_on.svg" alt="myPage" @click="goMypage()" />
             </div>
         </div>
         <!--검색버튼 클릭시 노출 메뉴-->
@@ -21,7 +21,7 @@
             <div class="search_menu_wrap">
                 <div class="inner_search_menu">
                     <div class="close_area">
-                        <img src="img/modal_close_btn.png" alt="" />
+                        <img src="@img/modal_close_btn.png" alt="" />
                     </div>
                     <div class="search_area">
                         <input
@@ -31,7 +31,7 @@
                             @keyup.enter="goSearch()"
                         />
                         <button value="검색" class="search_btn aside_search_btn" @click="goSearch()">
-                            <img src="img/search_icon.png" alt="" />
+                            <img src="@img/search_icon.png" alt="" />
                         </button>
                     </div>
                     <div class="latest_search">
@@ -84,7 +84,7 @@
                     <div class="search_menu_bottom">
                         <div class="logo_wrap">
                             <a @click="goHome()" target="_blank">
-                                <img src="img/header_logo.png" alt="Safeean" />
+                                <img src="@img/header_logo.png" alt="Safeean" />
                             </a>
                         </div>
                         <ul class="sns_link">
@@ -275,6 +275,8 @@ export default {
 
             let code = companyCode || this.$route.query.companyCode
             let path = code ? (tk ? '/mypage' : '/login') : '/error'
+
+            console.log('path', path)
 
             this.$router
                 .push({

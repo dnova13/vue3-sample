@@ -13,11 +13,11 @@
             <div
                 class="main_img_bg"
                 :style="{
-                    background: 'url(' + changeImgUrl(shopInfo.companyCover) + ') no-repeat 50% 0 / contain',
+                    background: 'url(' + changeImgUrl(shopInfo?.companyCover) + ') no-repeat 50% 0 / contain',
                 }"
             ></div>
             <div class="main_round_bg">
-                <img src="img/main_round_bg.png" alt="" />
+                <img src="@img/main_round_bg.png" alt="" />
             </div>
             <div id="slider3" class="main_slide_bg">
                 <div class="slide_wrapper main">
@@ -45,10 +45,10 @@
                     </div>
                     <ul class="main_dots"></ul>
                     <a class="control prev main_slide_control control_prev">
-                        <img src="img/main_slide_arrow_prev.png" alt="" />
+                        <img src="@img/main_slide_arrow_prev.png" alt="" />
                     </a>
                     <a class="control next main_slide_control control_next">
-                        <img src="img/main_slide_arrow_prev.png" alt="" />
+                        <img src="@img/main_slide_arrow_prev.png" alt="" />
                     </a>
                 </div>
             </div>
@@ -107,7 +107,7 @@ export default {
         }
     },
     created() {
-        this.companyCode = this.shopInfo.biznum
+        this.companyCode = this.shopInfo?.biznum
         const queryStrings = this.$route.query //for real server
         let productCodeArr = []
 

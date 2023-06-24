@@ -12,10 +12,10 @@
                 <div class="restaurant_slide_pager">
                     <div class="restaurant_slide_controls">
                         <span class="prev">
-                            <img src="img/sub_slide_arrow_shadow.png" alt="" />
+                            <img src="@img/sub_slide_arrow_shadow.png" alt="" />
                         </span>
                         <span class="next">
-                            <img src="img/sub_slide_arrow_shadow.png" alt="" />
+                            <img src="@img/sub_slide_arrow_shadow.png" alt="" />
                         </span>
                     </div>
                     <ul class="restaurant_slide_dots"></ul>

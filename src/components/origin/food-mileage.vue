@@ -1,7 +1,7 @@
 <template>
     <div class="modal_window" style="max-width: 380px; height: auto" @click="modalOff">
         <div class="close_area" @click="modalOff">
-            <img src="img/modal_close_btn.png" alt="" />
+            <img src="@img/modal_close_btn.png" alt="" />
         </div>
         <div class="modal_window_inner">
             <div class="title">
@@ -17,7 +17,7 @@
             </div>
             <div class="content">
                 <div class="modal_img_wrap">
-                    <img src="img/food_mileage_logo.png" style="height: 150px" />
+                    <img src="@img/food_mileage_logo.png" style="height: 150px" />
                 </div>
                 <div class="modal_text_wrap" style="margin-bottom: 1vw">
                     <span class="bg_text">{{ checkPoint.value }} (톤ㆍ㎞)</span>

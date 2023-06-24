@@ -5,6 +5,7 @@ import {
 } from './config'
 
 const baseUrl = process.env.VUE_APP_BASE_URL
+
 const router = createRouter({
     history: createWebHistory(baseUrl),
     routes: publicRoute,

@@ -32,7 +32,7 @@
                                             class="zoom-in-wrap"
                                             @click.capture="imgModalOn(changeImgUrl(doc))"
                                         >
-                                            <img class="zoom-in-icon" src="img/pluse_btn.png" />
+                                            <img class="zoom-in-icon" src="@img/pluse_btn.png" />
                                         </div>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                                             <img
                                                 :style="{ bottom: '2.5vh' }"
                                                 class="zoom-in-icon"
-                                                src="img/pluse_btn.png"
+                                                src="@img/pluse_btn.png"
                                             />
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@ export default {
             // console.log(this.traceInfo[idx].docSrc)
 
             if (!_img && this.traceInfo[idx].docSrc.length > 0) {
-                return 'img/prepare.png'
+                return process.env.VUE_APP_BASE_URL + 'img/prepare.png'
             }
 
             return changeImgUrl(_img)

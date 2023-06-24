@@ -9,7 +9,7 @@
             @click="modalOff"
         >
             <div class="close_area" @click="modalOff">
-                <img src="img/modal_close_btn.png" alt="" />
+                <img src="@img/modal_close_btn.png" alt="" />
             </div>
             <div class="modal_window_inner">
                 <!--

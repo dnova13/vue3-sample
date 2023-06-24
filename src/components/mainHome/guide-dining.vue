@@ -18,17 +18,17 @@
                 <ul class="checkpoint_list">
                     <li>
                         <div class="img_wrap">
-                            <img src="img/splash_checkpoint_img01.png" alt="" />
+                            <img src="@img/splash_checkpoint_img01.png" alt="" />
                         </div>
                     </li>
                     <li>
                         <div class="img_wrap">
-                            <img src="img/splash_checkpoint_img02.png" alt="" />
+                            <img src="@img/splash_checkpoint_img02.png" alt="" />
                         </div>
                     </li>
                     <li>
                         <div class="img_wrap">
-                            <img src="img/splash_checkpoint_img03.png" alt="" />
+                            <img src="@img/splash_checkpoint_img03.png" alt="" />
                         </div>
                     </li>
                 </ul>
@@ -37,7 +37,13 @@
                 <a class="splash_hide_btn" @click="hideGuide">한 눈에 보러 가기 ></a>
             </div>
             <label class="hide-week-wrap" for="hide-week">
-                <input id="hide-week" v-model="isChecked" type="checkbox" name="hide-week" />
+                <input
+                    id="hide-week"
+                    v-model="isChecked"
+                    style="margin-right: 3px"
+                    type="checkbox"
+                    name="hide-week"
+                />
                 <span>하루동안 보지 않기</span>
             </label>
         </div>
@@ -73,7 +79,7 @@ export default {
         // 이미지 url 변경
         changeImgUrl(_img) {
             if (!_img) {
-                return 'img/guide_ingredient.png'
+                return `${process.env.VUE_APP_BASE_URL}img/guide_ingredient.png`
             }
 
             return changeImgUrl(_img)

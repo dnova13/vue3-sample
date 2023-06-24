@@ -21,7 +21,7 @@
                 />
                 <!-- @input="updateInput" -->
                 <button value="검색" class="search_btn" @click="search">
-                    <img src="img/search_icon.png" alt="" />
+                    <img src="@img/search_icon.png" alt="" />
                 </button>
             </div>
             <!-- 로그 -->
