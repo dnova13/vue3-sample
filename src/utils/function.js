@@ -371,3 +371,21 @@ export function importFilesInFolder(ext, files) {
 
     return modules
 }
+
+// YYYY-MM-dd 형태로
+export function checkValidDate(_date) {
+    try {
+        const [year, month, day] = _date.split('-')
+        const date = new Date(year, month - 1, day)
+
+        const inputYear = date.getFullYear()
+        const inputMonth = date.getMonth() + 1
+        const inputDay = date.getDate()
+
+        if (parseInt(year) === inputYear && parseInt(month) === inputMonth && parseInt(day) === inputDay) {
+            return true
+        }
+    } catch (error) {}
+
+    return false
+}

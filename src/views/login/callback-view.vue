@@ -1,18 +1,21 @@
 <!-- callBack 페이지 view -->
 <template>
-    <Loading />
+    <div>
+        <Loading />
+    </div>
 </template>
 
 <script>
 import Loading from '@/components/utils/loading'
 import * as util from '@/utils/function.js'
+import NaverLogin from '@/utils/naverLoginService.js'
 import { _xurl } from '#/localSettings.js'
 
 export default {
-    props: {},
     components: {
         Loading,
     },
+    props: {},
     data() {
         return {
             rtype: '',
@@ -22,7 +25,10 @@ export default {
     async created() {
         this.rtype = this.$route.params.str
         const code = this.$route.query.code
+
         let preCode = ''
+        let data = null
+        let userInfo = null
 
         if (!this.rtype) {
             alert('server error')
@@ -31,19 +37,42 @@ export default {
 
         if (this.rtype === 'kakao') {
             preCode = 'KK'
+            data = await this.getKakaoLoginInfo(code)
+
+            if (!data?.kakao_account) {
+                alert('server error')
+                return
+            }
+
+            userInfo = {
+                userid: preCode + '-' + data.id,
+                rtype: this.rtype,
+                uname: data.kakao_account?.profile?.nickname,
+                email: data.kakao_account?.email,
+            }
         } else if (this.rtype === 'naver') {
             preCode = 'NV'
+            const naeverLogin = new NaverLogin()
+            const data = await naeverLogin.getUserInfo()
+
+            if (!data?.user) {
+                alert('server error')
+                return
+            }
+
+            let birthday = `${data.user?.birthyear}-${data.user?.birthday}`
+
+            userInfo = {
+                userid: preCode + '-' + data.user.id,
+                rtype: this.rtype,
+                uname: data.user?.name ? data.user.name : data.user?.nickname ? data.user.nickname : '',
+                email: data.user?.email ? data.user.email : '',
+                gender: data.user?.gender ? (data.user?.gender === 'M' ? 'male' : 'female') : '',
+                birthday: util.checkValidDate(birthday) ? birthday : '',
+            }
         }
 
-        const data = await this.getKakaoLoginInfo(code)
-
-        // console.log('CCCCCCCCCC', data)
-        const userInfo = {
-            userid: preCode + '-' + data.id,
-            rtype: this.rtype,
-            uname: data.kakao_account?.profile?.nickname,
-            email: data.kakao_account?.email,
-        }
+        // console.log('userInfo', userInfo)
 
         this.ajaxFetchLogin(_xurl.signin, userInfo)
     },
@@ -63,7 +92,7 @@ export default {
 
             if (!result.ok) {
                 alert('server error')
-                return
+                return null
             }
 
             result = await result.json()
@@ -90,9 +119,9 @@ export default {
                 })
             } catch (error) {
                 alert('server error')
-                return
+                return null
             }
-            console.log(result)
+            // console.log(result)
             return result
         },
         ajaxFetchLogin(_url, userinfo) {

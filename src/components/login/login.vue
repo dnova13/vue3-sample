@@ -32,7 +32,10 @@
             <button class="loginBtn kakao" @click="kakaoLogin">
                 <img src="@img/login/kakao_login_medium_wide.png" />
             </button>
-            <button class="loginBtn naver" @click="loginBtn('naver')" />
+            <!-- id="naverIdLogin"  -->
+            <button id="naverIdLogin_loginButton" class="loginBtn naver" @click="naverLogin" />
+            <!-- <button id="naver_id_login" class="loginBtn naver" @click="naverLogin" /> -->
+
             <button class="loginBtn google" @click="googleLogin" />
             <!--
                 <div class="join">
@@ -46,6 +49,7 @@
 <script>
 // import addUserInfo from '@/components/add-userinfo'
 import * as util from '@/utils/function.js'
+import NaverLogin from '@/utils/naverLoginService.js'
 import { _xurl } from '#/localSettings.js'
 
 const hostUrl = location.protocol + '//' + location.host
@@ -56,11 +60,10 @@ export default {
     },
     mounted() {
         this.$emit('setTrigger', '/login')
-        // this.naverLogin();
+        new NaverLogin()
     },
     methods: {
         kakaoLogin() {
-            const preKakao = 'KK'
             const rdUrl = hostUrl + '/callback/kakao'
 
             if (!Kakao.isInitialized()) Kakao.init(process.env.VUE_APP_KK_CLIENT)
@@ -73,20 +76,6 @@ export default {
             localStorage.setItem('ccode', this.$route.query.companyCode)
         },
         naverLogin() {
-            console.log('naver')
-
-            const cid = '8hpffobLk4qA6gOYMlfa'
-            let url = 'http://localhost:5503'
-
-            let naverLogin = new naver_id_login(cid, url)
-            let state = naverLogin.getUniqState()
-
-            // naver_id_login.setButton('white', 2, 40);
-            // naver_id_login.setDomain('YOUR_SERVICE_URL');
-            naverLogin.setState(state)
-            // naverLogin.setPopup();
-            naverLogin.init_naver_id_login()
-
             localStorage.setItem('ccode', this.$route.query.companyCode)
         },
         googleLogin() {
@@ -105,8 +94,6 @@ export default {
         cbSigninGoogle(res) {
             const responsePayload = util.decodeJwtResponse(res.credential)
             const prepGoogle = 'GG'
-
-            // console.log(responsePayload);
 
             const userinfo = {
                 userid: prepGoogle + '-' + responsePayload.sub,

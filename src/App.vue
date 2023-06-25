@@ -41,7 +41,7 @@ import {
 } from '@/utils/function.js'
 
 // JHJUN20221219 localSetting.js 에서 backend URL정보 import한게 셋팅하도록 변경.
-import { _xurl, authKey } from '#/localSettings.js'
+import { _xurl } from '#/localSettings.js'
 
 import tapTop from '@/components/nav/tap-top'
 import mainNav from '@/components/nav/main-nav'
@@ -105,7 +105,7 @@ export default {
             localStorage.removeItem('ccode')
         }
 
-        console.log('queryStrings', queryStrings)
+        // console.log('queryStrings', queryStrings)
 
         // urlMenuList = urlMenuList.replace('companyCode', queryStrings.companyCode);
         callAjax(urlMenuList, queryStrings, this, this.getData, this.isError)
